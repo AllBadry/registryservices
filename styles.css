@@ -1,0 +1,349 @@
+/* --- المتغيرات والإعدادات الأساسية --- */
+:root {
+    --bg-dark: #07090f;
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    --accent-1: #3b82f6; /* أزرق تقني */
+    --accent-2: #8b5cf6; /* بنفسجي عصري */
+    --glass-bg: rgba(255, 255, 255, 0.03);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --card-hover: rgba(255, 255, 255, 0.06);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Outfit', sans-serif;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    line-height: 1.6;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* --- الخلفية المتحركة (Glowing Orbs) --- */
+.bg-orb {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(100px);
+    z-index: -1;
+    animation: float 20s infinite ease-in-out alternate;
+}
+.orb-1 { width: 50vw; height: 50vw; background: rgba(59, 130, 246, 0.15); top: -20%; left: -10%; }
+.orb-2 { width: 40vw; height: 40vw; background: rgba(139, 92, 246, 0.15); bottom: -10%; right: -10%; animation-delay: -5s; }
+.orb-3 { width: 30vw; height: 30vw; background: rgba(14, 165, 233, 0.1); top: 40%; left: 50%; animation-delay: -10s; }
+
+@keyframes float {
+    0% { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(50px, 50px) scale(1.1); }
+}
+
+/* --- القائمة العلوية (Navbar) --- */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 5%;
+    background: rgba(7, 9, 15, 0.5);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--glass-border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.nav-logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    background: linear-gradient(to right, var(--accent-1), var(--accent-2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.nav-links a {
+    color: var(--text-main);
+    text-decoration: none;
+    margin-left: 2rem;
+    font-size: 0.95rem;
+    transition: color 0.3s;
+}
+.nav-links a:hover { color: var(--accent-1); }
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+    padding: 0.6rem 1.5rem;
+    border-radius: 50px;
+    font-weight: 500;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(59, 130, 246, 0.4);
+    color: white !important;
+}
+
+/* --- الهيكل الرئيسي --- */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+}
+
+/* --- الترويسة (Hero) --- */
+.hero {
+    text-align: center;
+    margin-bottom: 6rem;
+    padding-top: 2rem;
+}
+.hero-badge {
+    display: inline-block;
+    padding: 0.4rem 1rem;
+    background: rgba(59, 130, 246, 0.1);
+    border: 1px solid rgba(59, 130, 246, 0.3);
+    border-radius: 50px;
+    font-size: 0.85rem;
+    color: var(--accent-1);
+    margin-bottom: 1.5rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+h1 {
+    font-size: 4.5rem;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+}
+.text-gradient {
+    background: linear-gradient(to right, #60a5fa, #c084fc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.subtitle {
+    font-size: 1.25rem;
+    color: var(--text-muted);
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* --- لوحات الزجاج (Glass Panels) --- */
+.glass-panel {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 24px;
+    padding: 4rem;
+    margin-bottom: 4rem;
+    backdrop-filter: blur(12px);
+}
+h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+.section-desc {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    margin-bottom: 3rem;
+}
+
+/* --- البنية التحتية (Features) --- */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+.feature-card {
+    padding: 2rem;
+    background: rgba(0,0,0,0.2);
+    border-radius: 16px;
+    border: 1px solid transparent;
+    transition: border-color 0.3s;
+}
+.feature-card:hover {
+    border-color: var(--glass-border);
+    background: var(--card-hover);
+}
+.feature-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+.feature-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+    color: #fff;
+}
+.feature-card p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+/* --- الدومينات وتأثيرات 3D --- */
+.domains-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    perspective: 1000px; /* لتمكين التأثير ثلاثي الأبعاد */
+}
+
+.domain-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    cursor: pointer;
+    transform-style: preserve-3d;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.card-content {
+    padding: 2.5rem 2rem;
+    transform: translateZ(30px); /* رفع المحتوى عن البطاقة */
+}
+
+.domain-card:hover {
+    border-color: var(--accent-1);
+    box-shadow: 0 15px 35px rgba(59, 130, 246, 0.15);
+}
+
+.domain-name {
+    font-size: 1.5rem;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.5px;
+}
+
+.domain-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--glass-border);
+    padding-top: 1.5rem;
+}
+
+.domain-status {
+    color: #34d399;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.domain-status::before {
+    content: '';
+    width: 6px; height: 6px;
+    background: #34d399;
+    border-radius: 50%;
+    box-shadow: 0 0 8px #34d399;
+}
+
+.copy-hint {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    opacity: 0;
+    transition: opacity 0.3s, transform 0.3s;
+    transform: translateX(-10px);
+}
+.domain-card:hover .copy-hint {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* --- التواصل --- */
+.contact-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+@media(max-width: 768px){
+    .contact-wrapper { grid-template-columns: 1fr; gap: 2rem; }
+    h1 { font-size: 3rem; }
+}
+
+.contact-text h2 { margin-bottom: 1rem; }
+.contact-text p { color: var(--text-muted); font-size: 1.1rem; }
+
+.contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.contact-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+    background: rgba(0,0,0,0.3);
+    border-radius: 12px;
+    text-decoration: none;
+    border: 1px solid var(--glass-border);
+    transition: all 0.3s ease;
+}
+.contact-card:hover {
+    background: var(--card-hover);
+    transform: translateX(10px);
+}
+.contact-card.highlight:hover {
+    border-color: var(--accent-2);
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.2);
+}
+.contact-info h4 { color: var(--text-muted); font-size: 0.85rem; font-weight: 400; margin-bottom: 0.3rem;}
+.contact-info span { color: var(--text-main); font-size: 1.1rem; font-weight: 500; }
+.contact-icon { font-size: 1.5rem; color: var(--accent-1); }
+
+/* --- الإشعار (Toast) --- */
+.toast {
+    position: fixed;
+    bottom: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #0f172a;
+    border: 1px solid var(--accent-1);
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    transition: bottom 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 1000;
+}
+.toast.show { bottom: 40px; }
+.toast-icon {
+    background: var(--accent-1);
+    color: #fff;
+    width: 24px; height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+/* --- الأنيميشن وحركة الظهور (Scroll Animations) --- */
+.reveal {
+    opacity: 0;
+    visibility: hidden;
+}
+.reveal.fade-up {
+    transform: translateY(40px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out, visibility 0.8s;
+}
+.reveal.is-visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* تذييل */
+footer {
+    text-align: center;
+    padding: 2rem 0;
+    border-top: 1px solid var(--glass-border);
+    color: var(--text-muted);
+}
