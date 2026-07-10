@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UK Registry Services | الأصول الرقمية</title>
+    <style>
+        /* إعدادات الألوان والخطوط الأساسية */
+        :root {
+            --bg-color: #050505;
+            --surface-color: #111111;
+            --text-primary: #e0e0e0;
+            --text-secondary: #888888;
+            --accent-color: #ffffff;
+            --border-color: #333333;
+            --font-ar: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            --font-en: 'Courier New', Courier, monospace;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            font-family: var(--font-ar);
+            line-height: 1.7;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        /* تنسيق الترويسة */
+        header {
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 2rem;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        h1 {
+            font-family: var(--font-en);
+            color: var(--accent-color);
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: 2px;
+            direction: ltr;
+        }
+
+        .subtitle {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        /* تنسيق الأقسام */
+        section {
+            margin-bottom: 3.5rem;
+            border: 1px solid var(--border-color);
+            padding: 2.5rem;
+            background-color: var(--surface-color);
+        }
+
+        h2 {
+            color: var(--accent-color);
+            border-bottom: 1px dashed var(--border-color);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            display: inline-block;
+        }
+
+        /* قائمة المبادئ */
+        .principles-list {
+            list-style: none;
+        }
+
+        .principles-list li {
+            margin-bottom: 1.2rem;
+            padding-right: 1.5rem;
+            position: relative;
+        }
+
+        .principles-list li::before {
+            content: '>';
+            position: absolute;
+            right: 0;
+            font-family: var(--font-en);
+            color: var(--text-secondary);
+            font-weight: bold;
+        }
+
+        /* شبكة النطاقات (الدومينات) */
+        .domains-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .domain-card {
+            border: 1px solid var(--border-color);
+            padding: 1.5rem;
+            text-align: left;
+            direction: ltr;
+            background-color: var(--bg-color);
+            transition: all 0.2s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .domain-card:hover {
+            border-color: var(--accent-color);
+            background-color: #1a1a1a;
+            transform: translateY(-2px);
+        }
+
+        .domain-name {
+            font-family: var(--font-en);
+            font-size: 1.15rem;
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+            display: block;
+            font-weight: bold;
+        }
+
+        .domain-status {
+            font-size: 0.85rem;
+            color: #4CAF50; /* لون أخضر دلالة على التوفر */
+            font-family: var(--font-ar);
+            text-align: right;
+            direction: rtl;
+        }
+
+        /* روابط التواصل */
+        .contact-box {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .contact-item span {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 0.3rem;
+        }
+
+        a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-family: var(--font-en);
+            direction: ltr;
+            display: inline-block;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s;
+        }
+
+        a:hover {
+            border-color: var(--accent-color);
+        }
+
+        /* التذييل */
+        footer {
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+            padding-top: 2rem;
+            color: var(--text-secondary);
+            font-family: var(--font-en);
+            font-size: 0.85rem;
+            direction: ltr;
+        }
+
+        /* تأثير مؤشر سطر الأوامر الوامض */
+        .cursor {
+            display: inline-block;
+            width: 12px;
+            height: 1.2em;
+            background-color: var(--accent-color);
+            vertical-align: bottom;
+            animation: blink 1s step-end infinite;
+            margin-left: 5px;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 id="typewriter"></h1>
+            <p class="subtitle">شركة متخصصة في الاستحواذ وإدارة الأصول الرقمية البريطانية</p>
+        </header>
+
+        <section id="about">
+            <h2>من نحن</h2>
+            <p>نحن مؤسسة متخصصة في الاستثمار، التطوير، والوساطة للأصول الرقمية ونطاقات الإنترنت الاستراتيجية في سوق المملكة المتحدة. نهدف إلى تزويد الأعمال التجارية المحلية والوطنية بعناوين رقمية تعكس هويتها، وتزيد من موثوقيتها، وتضمن لها تواجداً تقنياً صلباً وموثوقاً في محركات البحث.</p>
+        </section>
+
+        <section id="principles">
+            <h2>مبادئنا</h2>
+            <ul class="principles-list">
+                <li><strong>الشفافية الهيكلية:</strong> وضوح تام في تقييم الأصول وتسعيرها، وإجراءات النقل التقنية.</li>
+                <li><strong>القيمة الاستراتيجية:</strong> لا نستحوذ إلا على النطاقات ذات الإمكانات التجارية الحقيقية والصلة الجغرافية المباشرة بالسوق البريطاني.</li>
+                <li><strong>الأمان التقني:</strong> استخدام بروتوكولات حماية صارمة وقنوات مسجلة رسمياً لضمان سلامة النقل والاستحواذ.</li>
+            </ul>
+        </section>
+
+        <section id="portfolio">
+            <h2>أصولنا الرقمية (المعروضة للاستحواذ)</h2>
+            <p style="margin-bottom: 1.5rem; color: var(--text-secondary); font-size: 0.9rem;">
+                * انقر على اسم النطاق لنسخه إلى الحافظة تلقائياً.
+            </p>
+            <div class="domains-grid">
+                <div class="domain-card" onclick="copyToClipboard('belfastdentist.co.uk')">
+                    <span class="domain-name">belfastdentist.co.uk</span>
+                    <div class="domain-status">متاح للاستحواذ</div>
+                </div>
+                <div class="domain-card" onclick="copyToClipboard('belfastdentists.co.uk')">
+                    <span class="domain-name">belfastdentists.co.uk</span>
+                    <div class="domain-status">متاح للاستحواذ</div>
+                </div>
+                <div class="domain-card" onclick="copyToClipboard('brightonhotel.co.uk')">
+                    <span class="domain-name">brightonhotel.co.uk</span>
+                    <div class="domain-status">متاح للاستحواذ</div>
+                </div>
+                <div class="domain-card" onclick="copyToClipboard('leicesterhotel.co.uk')">
+                    <span class="domain-name">leicesterhotel.co.uk</span>
+                    <div class="domain-status">متاح للاستحواذ</div>
+                </div>
+                <div class="domain-card" onclick="copyToClipboard('pharmacies.quest')">
+                    <span class="domain-name">pharmacies.quest</span>
+                    <div class="domain-status">متاح للاستحواذ</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>تواصل معنا</h2>
+            <p>للاستفسارات العامة، أو لتقديم عروض الاستحواذ المباشرة على أحد أصولنا، يرجى مراسلتنا عبر العناوين المخصصة أدناه:</p>
+            <div class="contact-box">
+                <div class="contact-item">
+                    <span>للاستفسارات العامة وإدارة الأصول:</span>
+                    <a href="mailto:contact@registryservices.uk">contact@registryservices.uk</a>
+                </div>
+                <div class="contact-item">
+                    <span>لقسم المبيعات وعروض الاستحواذ:</span>
+                    <a href="mailto:acquisitions@registryservices.uk">acquisitions@registryservices.uk</a>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            &copy; 2026 UK Registry Services. All rights reserved.
+        </footer>
+    </div>
+
+    <script>
+        // تأثير الكتابة (Typewriter Effect) للعنوان الرئيسي ليعطي طابعاً تقنياً
+        const textToType = "UK Registry Services";
+        const titleElement = document.getElementById('typewriter');
+        let i = 0;
+
+        function typeWriter() {
+            if (i < textToType.length) {
+                titleElement.innerHTML = textToType.substring(0, i + 1) + '<span class="cursor"></span>';
+                i++;
+                setTimeout(typeWriter, 120);
+            }
+        }
+        
+        // تشغيل تأثير الكتابة عند تحميل الصفحة
+        window.addEventListener('load', typeWriter);
+
+        // وظيفة نسخ اسم الدومين عند الضغط عليه
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                alert('تم نسخ النطاق بنجاح:\n' + text);
+            }).catch(err => {
+                console.error('حدث خطأ أثناء النسخ: ', err);
+            });
+        }
+    </script>
+</body>
+</html>
