@@ -4,417 +4,144 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UK Registry Services | Premium Digital Assets</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <style>
-        /* CSS Variables & Reset */
-        :root {
-            --bg-gradient-1: #0f172a;
-            --bg-gradient-2: #1e1b4b;
-            --bg-gradient-3: #312e81;
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-            --accent: #38bdf8;
-            --accent-hover: #0ea5e9;
-            --glass-bg: rgba(255, 255, 255, 0.05);
-            --glass-border: rgba(255, 255, 255, 0.1);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
-
-        body {
-            background: linear-gradient(45deg, var(--bg-gradient-1), var(--bg-gradient-2), var(--bg-gradient-3));
-            background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
-            color: var(--text-main);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        /* Animated Background Shapes */
-        .shape {
-            position: fixed;
-            border-radius: 50%;
-            filter: blur(80px);
-            z-index: -1;
-            animation: float 10s infinite ease-in-out alternate;
-        }
-        .shape-1 {
-            width: 400px; height: 400px;
-            background: rgba(56, 189, 248, 0.15);
-            top: -100px; left: -100px;
-        }
-        .shape-2 {
-            width: 500px; height: 500px;
-            background: rgba(139, 92, 246, 0.15);
-            bottom: -200px; right: -100px;
-            animation-delay: -5s;
-        }
-
-        @keyframes float {
-            0% { transform: translateY(0) scale(1); }
-            100% { transform: translateY(50px) scale(1.1); }
-        }
-
-        /* Container & Layout */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 4rem 2rem;
-        }
-
-        /* Glassmorphism Classes */
-        .glass-panel {
-            background: var(--glass-bg);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid var(--glass-border);
-            border-radius: 24px;
-            padding: 3rem;
-            margin-bottom: 4rem;
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .glass-panel:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.4);
-        }
-
-        /* Typography */
-        h1 {
-            font-size: 4rem;
-            font-weight: 700;
-            background: linear-gradient(to right, #fff, var(--accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 1rem;
-            text-align: center;
-        }
-
-        h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-            color: var(--text-main);
-            position: relative;
-            display: inline-block;
-        }
-
-        h2::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 0;
-            width: 50%;
-            height: 4px;
-            background: var(--accent);
-            border-radius: 2px;
-            transition: width 0.3s ease;
-        }
-
-        .glass-panel:hover h2::after {
-            width: 100%;
-        }
-
-        p.subtitle {
-            text-align: center;
-            font-size: 1.2rem;
-            color: var(--text-muted);
-            max-width: 700px;
-            margin: 0 auto 4rem auto;
-        }
-
-        /* Domains Grid */
-        .domains-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .domain-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid var(--glass-border);
-            border-radius: 16px;
-            padding: 2rem;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        .domain-card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: -100%;
-            width: 100%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
-            transition: left 0.5s ease;
-        }
-
-        .domain-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            border-color: var(--accent);
-            box-shadow: 0 10px 30px rgba(56, 189, 248, 0.2);
-        }
-
-        .domain-card:hover::before {
-            left: 100%;
-        }
-
-        .domain-name {
-            font-size: 1.4rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            display: block;
-        }
-
-        .domain-status {
-            font-size: 0.9rem;
-            color: #4ade80;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .domain-status::before {
-            content: '';
-            width: 8px; height: 8px;
-            background-color: #4ade80;
-            border-radius: 50%;
-            box-shadow: 0 0 10px #4ade80;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.7); }
-            70% { box-shadow: 0 0 0 10px rgba(74, 222, 128, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(74, 222, 128, 0); }
-        }
-
-        /* Contact Section */
-        .contact-links {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        .contact-card {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background: rgba(0,0,0,0.2);
-            padding: 1.5rem 2rem;
-            border-radius: 12px;
-            border: 1px solid transparent;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            color: var(--text-main);
-        }
-
-        .contact-card:hover {
-            background: rgba(56, 189, 248, 0.1);
-            border-color: var(--accent);
-            transform: translateX(10px);
-        }
-
-        .contact-info h4 {
-            color: var(--text-muted);
-            font-weight: 400;
-            font-size: 0.9rem;
-            margin-bottom: 0.3rem;
-        }
-
-        .contact-info span {
-            font-size: 1.2rem;
-            font-weight: 600;
-        }
-
-        .contact-icon {
-            font-size: 1.5rem;
-            color: var(--accent);
-            transition: transform 0.3s ease;
-        }
-
-        .contact-card:hover .contact-icon {
-            transform: scale(1.2) rotate(-10deg);
-        }
-
-        /* Scroll Reveal Animation Classes */
-        .reveal {
-            opacity: 0;
-            transform: translateY(50px);
-            transition: all 0.8s ease-out;
-        }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Toast Notification */
-        .toast {
-            position: fixed;
-            bottom: -100px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(15, 23, 42, 0.9);
-            backdrop-filter: blur(10px);
-            color: white;
-            padding: 1rem 2rem;
-            border-radius: 50px;
-            border: 1px solid var(--accent);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            transition: bottom 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-            z-index: 1000;
-            font-weight: 600;
-        }
-
-        .toast.show {
-            bottom: 40px;
-        }
-
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 2rem;
-            color: var(--text-muted);
-            border-top: 1px solid var(--glass-border);
-            margin-top: 2rem;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <!-- Animated Background Shapes -->
-    <div class="shape shape-1"></div>
-    <div class="shape shape-2"></div>
+    <div class="bg-orb orb-1"></div>
+    <div class="bg-orb orb-2"></div>
+    <div class="bg-orb orb-3"></div>
+
+    <nav class="navbar reveal">
+        <div class="nav-logo">UKRS.</div>
+        <div class="nav-links">
+            <a href="#about">About</a>
+            <a href="#infrastructure">Infrastructure</a>
+            <a href="#portfolio">Assets</a>
+            <a href="#contact" class="btn-primary">Contact Us</a>
+        </div>
+    </nav>
 
     <div class="container">
         
-        <!-- Header -->
-        <header class="reveal">
-            <h1>UK Registry Services</h1>
-            <p class="subtitle">Curating and securing premium digital real estate for the United Kingdom market. High-authority domains for modern enterprises.</p>
+        <header class="hero reveal">
+            <div class="hero-badge">Premium UK Domains</div>
+            <h1>Securing Digital Dominance in the <span class="text-gradient">UK Market</span></h1>
+            <p class="subtitle">We curate, manage, and broker high-authority digital real estate. Empowering local businesses and national brands with unified search engine presence and localized routing.</p>
         </header>
 
-        <!-- About Section -->
-        <section class="glass-panel reveal">
-            <h2>Who We Are</h2>
-            <p style="color: var(--text-muted); font-size: 1.1rem; max-width: 800px;">
-                We specialize in the acquisition, strategic management, and brokerage of premium UK digital assets. Our inventory is strictly curated to provide local businesses, healthcare facilities, and national brands with authoritative, geo-targeted digital identities that establish immediate trust and market dominance.
-            </p>
-        </section>
-
-        <!-- Portfolio Section -->
-        <section class="glass-panel reveal">
-            <h2>Curated Inventory</h2>
-            <p style="color: var(--text-muted);">Click any domain card to copy the asset name directly to your clipboard.</p>
-            
-            <div class="domains-grid">
-                <div class="domain-card" onclick="copyDomain('belfastdentist.co.uk')">
-                    <span class="domain-name">belfastdentist.co.uk</span>
-                    <span class="domain-status">Premium Asset Available</span>
+        <section id="infrastructure" class="glass-panel reveal fade-up">
+            <h2>Technical Infrastructure</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🔍</div>
+                    <h3>Unified SEO Indexing</h3>
+                    <p>Our assets are primed for immediate search authority, resolving canonical redirect structures to ensure maximum visibility for localized UK queries.</p>
                 </div>
-                <div class="domain-card" onclick="copyDomain('belfastdentists.co.uk')">
-                    <span class="domain-name">belfastdentists.co.uk</span>
-                    <span class="domain-status">Premium Asset Available</span>
+                <div class="feature-card">
+                    <div class="feature-icon">📍</div>
+                    <h3>Localized Routing</h3>
+                    <p>Perfectly positioned domains designed to capture specific geographical markets, ideal for patient-to-clinic routing and local service discovery.</p>
                 </div>
-                <div class="domain-card" onclick="copyDomain('brightonhotel.co.uk')">
-                    <span class="domain-name">brightonhotel.co.uk</span>
-                    <span class="domain-status">Premium Asset Available</span>
-                </div>
-                <div class="domain-card" onclick="copyDomain('leicesterhotel.co.uk')">
-                    <span class="domain-name">leicesterhotel.co.uk</span>
-                    <span class="domain-status">Premium Asset Available</span>
-                </div>
-                <div class="domain-card" onclick="copyDomain('pharmacies.quest')">
-                    <span class="domain-name">pharmacies.quest</span>
-                    <span class="domain-status">Premium Asset Available</span>
+                <div class="feature-card">
+                    <div class="feature-icon">🛡️</div>
+                    <h3>Secure Handover</h3>
+                    <p>Enterprise-grade transfer protocols ensuring safe acquisition, seamless DNS configuration, and immediate operational readiness.</p>
                 </div>
             </div>
         </section>
 
-        <!-- Contact Section -->
-        <section class="glass-panel reveal">
-            <h2>Acquisition Inquiries</h2>
-            <p style="color: var(--text-muted);">Connect with our team to discuss asset transfer, pricing, and infrastructure setup.</p>
+        <section id="portfolio" class="glass-panel reveal fade-up">
+            <h2>Curated Asset Portfolio</h2>
+            <p class="section-desc">Click any asset card below to instantly copy the domain name. All listed assets are currently available for corporate acquisition.</p>
             
-            <div class="contact-links">
-                <a href="mailto:contact@registryservices.uk" class="contact-card">
-                    <div class="contact-info">
-                        <h4>General Enquiries & Management</h4>
-                        <span>contact@registryservices.uk</span>
+            <div class="domains-grid">
+                <div class="domain-card" data-domain="belfastdentist.co.uk">
+                    <div class="card-content">
+                        <span class="domain-name">belfastdentist.co.uk</span>
+                        <div class="domain-footer">
+                            <span class="domain-status">Verified Asset</span>
+                            <span class="copy-hint">Click to Copy</span>
+                        </div>
                     </div>
-                    <div class="contact-icon">→</div>
-                </a>
-                
-                <a href="mailto:acquisitions@registryservices.uk" class="contact-card">
-                    <div class="contact-info">
-                        <h4>Direct Sales & Offers</h4>
-                        <span>acquisitions@registryservices.uk</span>
+                </div>
+                <div class="domain-card" data-domain="belfastdentists.co.uk">
+                    <div class="card-content">
+                        <span class="domain-name">belfastdentists.co.uk</span>
+                        <div class="domain-footer">
+                            <span class="domain-status">Verified Asset</span>
+                            <span class="copy-hint">Click to Copy</span>
+                        </div>
                     </div>
-                    <div class="contact-icon">→</div>
-                </a>
+                </div>
+                <div class="domain-card" data-domain="brightonhotel.co.uk">
+                    <div class="card-content">
+                        <span class="domain-name">brightonhotel.co.uk</span>
+                        <div class="domain-footer">
+                            <span class="domain-status">Verified Asset</span>
+                            <span class="copy-hint">Click to Copy</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="domain-card" data-domain="leicesterhotel.co.uk">
+                    <div class="card-content">
+                        <span class="domain-name">leicesterhotel.co.uk</span>
+                        <div class="domain-footer">
+                            <span class="domain-status">Verified Asset</span>
+                            <span class="copy-hint">Click to Copy</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="domain-card" data-domain="pharmacies.quest">
+                    <div class="card-content">
+                        <span class="domain-name">pharmacies.quest</span>
+                        <div class="domain-footer">
+                            <span class="domain-status">Global Asset</span>
+                            <span class="copy-hint">Click to Copy</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="glass-panel reveal fade-up">
+            <div class="contact-wrapper">
+                <div class="contact-text">
+                    <h2>Initiate an Acquisition</h2>
+                    <p>Ready to establish your digital presence? Connect with our administration or direct sales team to secure your asset today.</p>
+                </div>
+                <div class="contact-links">
+                    <a href="mailto:contact@registryservices.uk" class="contact-card">
+                        <div class="contact-info">
+                            <h4>Management & Administration</h4>
+                            <span>contact@registryservices.uk</span>
+                        </div>
+                        <div class="contact-icon">↗</div>
+                    </a>
+                    <a href="mailto:acquisitions@registryservices.uk" class="contact-card highlight">
+                        <div class="contact-info">
+                            <h4>Sales & Acquisitions</h4>
+                            <span>acquisitions@registryservices.uk</span>
+                        </div>
+                        <div class="contact-icon">↗</div>
+                    </a>
+                </div>
             </div>
         </section>
 
         <footer>
-            &copy; 2026 UK Registry Services. All rights reserved.
+            <div class="footer-content">
+                <p>&copy; 2026 UK Registry Services. Infrastructure & Digital Assets.</p>
+            </div>
         </footer>
     </div>
 
-    <!-- Toast Element -->
-    <div id="toast" class="toast">Asset copied to clipboard!</div>
+    <div id="toast" class="toast">
+        <div class="toast-icon">✓</div>
+        <div class="toast-text">Asset Copied to Clipboard</div>
+    </div>
 
-    <script>
-        // 1. Scroll Reveal Animation Logic
-        function reveal() {
-            var reveals = document.querySelectorAll(".reveal");
-            for (var i = 0; i < reveals.length; i++) {
-                var windowHeight = window.innerHeight;
-                var elementTop = reveals[i].getBoundingClientRect().top;
-                var elementVisible = 100; // when to trigger the animation
-
-                if (elementTop < windowHeight - elementVisible) {
-                    reveals[i].classList.add("active");
-                }
-            }
-        }
-        window.addEventListener("scroll", reveal);
-        // Trigger once on load
-        reveal();
-
-        // 2. Copy to Clipboard & Toast Logic
-        function copyDomain(domainName) {
-            navigator.clipboard.writeText(domainName).then(() => {
-                showToast(`Asset Copied: ${domainName}`);
-            }).catch(err => {
-                console.error('Failed to copy text: ', err);
-            });
-        }
-
-        function showToast(message) {
-            const toast = document.getElementById("toast");
-            toast.innerText = message;
-            toast.classList.add("show");
-            
-            // Remove the show class after 3 seconds
-            setTimeout(() => { 
-                toast.classList.remove("show"); 
-            }, 3000);
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
