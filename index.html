@@ -1,20 +1,20 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UK Registry Services | الأصول الرقمية</title>
+    <title>UK Registry Services | Premium Digital Assets</title>
     <style>
-        /* إعدادات الألوان والخطوط الأساسية */
+        /* Corporate CSS Reset & Variables (Google/Microsoft Style) */
         :root {
-            --bg-color: #050505;
-            --surface-color: #111111;
-            --text-primary: #e0e0e0;
-            --text-secondary: #888888;
-            --accent-color: #ffffff;
-            --border-color: #333333;
-            --font-ar: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            --font-en: 'Courier New', Courier, monospace;
+            --bg-color: #ffffff;
+            --surface-color: #f8f9fa;
+            --text-primary: #202124;
+            --text-secondary: #5f6368;
+            --primary-blue: #1a73e8;
+            --border-color: #dadce0;
+            --success-color: #188038;
+            --font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
         }
 
         * {
@@ -26,271 +26,373 @@
         body {
             background-color: var(--bg-color);
             color: var(--text-primary);
-            font-family: var(--font-ar);
-            line-height: 1.7;
+            font-family: var(--font-family);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
         }
 
+        /* Layout & Container */
         .container {
-            max-width: 900px;
+            max-width: 1000px;
             margin: 0 auto;
-            padding: 3rem 2rem;
+            padding: 4rem 2rem;
         }
 
-        /* تنسيق الترويسة */
+        /* Hero / Header Section */
         header {
-            border-bottom: 2px solid var(--border-color);
-            padding-bottom: 2rem;
-            margin-bottom: 3rem;
             text-align: center;
+            padding-bottom: 3rem;
+            margin-bottom: 3rem;
+            border-bottom: 1px solid var(--border-color);
         }
 
         h1 {
-            font-family: var(--font-en);
-            color: var(--accent-color);
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-            letter-spacing: 2px;
-            direction: ltr;
+            color: var(--text-primary);
+            font-size: 2.8rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            letter-spacing: -0.5px;
         }
 
         .subtitle {
             color: var(--text-secondary);
-            font-size: 1.1rem;
+            font-size: 1.25rem;
+            max-width: 600px;
+            margin: 0 auto;
         }
 
-        /* تنسيق الأقسام */
+        /* Main Sections */
         section {
-            margin-bottom: 3.5rem;
-            border: 1px solid var(--border-color);
-            padding: 2.5rem;
-            background-color: var(--surface-color);
+            margin-bottom: 4rem;
         }
 
         h2 {
-            color: var(--accent-color);
-            border-bottom: 1px dashed var(--border-color);
-            padding-bottom: 0.5rem;
+            color: var(--text-primary);
+            font-size: 1.75rem;
+            font-weight: 500;
             margin-bottom: 1.5rem;
-            font-size: 1.5rem;
-            display: inline-block;
+            padding-bottom: 0.5rem;
         }
 
-        /* قائمة المبادئ */
-        .principles-list {
-            list-style: none;
-        }
-
-        .principles-list li {
-            margin-bottom: 1.2rem;
-            padding-right: 1.5rem;
-            position: relative;
-        }
-
-        .principles-list li::before {
-            content: '>';
-            position: absolute;
-            right: 0;
-            font-family: var(--font-en);
+        p {
             color: var(--text-secondary);
-            font-weight: bold;
+            font-size: 1.05rem;
+            margin-bottom: 1rem;
         }
 
-        /* شبكة النطاقات (الدومينات) */
+        /* Principles Grid */
+        .principles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .principle-card {
+            background-color: var(--surface-color);
+            padding: 2rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .principle-card h3 {
+            color: var(--primary-blue);
+            font-size: 1.2rem;
+            margin-bottom: 0.75rem;
+            font-weight: 500;
+        }
+
+        .principle-card p {
+            font-size: 0.95rem;
+            margin-bottom: 0;
+        }
+
+        /* Domains Portfolio */
+        .portfolio-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 1.5rem;
+        }
+
+        .instruction-text {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
         .domains-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 1.5rem;
         }
 
         .domain-card {
-            border: 1px solid var(--border-color);
-            padding: 1.5rem;
-            text-align: left;
-            direction: ltr;
             background-color: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.5rem;
             transition: all 0.2s ease;
             cursor: pointer;
-            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
         .domain-card:hover {
-            border-color: var(--accent-color);
-            background-color: #1a1a1a;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            border-color: transparent;
             transform: translateY(-2px);
         }
 
         .domain-name {
-            font-family: var(--font-en);
-            font-size: 1.15rem;
-            color: var(--accent-color);
-            margin-bottom: 0.5rem;
-            display: block;
-            font-weight: bold;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
         }
 
-        .domain-status {
-            font-size: 0.85rem;
-            color: #4CAF50; /* لون أخضر دلالة على التوفر */
-            font-family: var(--font-ar);
-            text-align: right;
-            direction: rtl;
-        }
-
-        /* روابط التواصل */
-        .contact-box {
+        .domain-footer {
             display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid var(--border-color);
+            padding-top: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        .status {
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--success-color);
+            display: flex;
+            align-items: center;
+        }
+
+        .status::before {
+            content: '';
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background-color: var(--success-color);
+            border-radius: 50%;
+            margin-right: 6px;
+        }
+
+        .copy-icon {
+            color: var(--primary-blue);
+            font-size: 0.85rem;
+            font-weight: 500;
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+
+        .domain-card:hover .copy-icon {
+            opacity: 1;
+        }
+
+        /* Contact Section */
+        .contact-container {
+            background-color: var(--surface-color);
+            border-radius: 8px;
+            padding: 2.5rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
             margin-top: 1.5rem;
         }
 
-        .contact-item {
-            display: flex;
-            flex-direction: column;
+        .contact-item h4 {
+            color: var(--text-primary);
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
         }
 
-        .contact-item span {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            margin-bottom: 0.3rem;
-        }
-
-        a {
-            color: var(--accent-color);
+        .contact-item a {
+            color: var(--primary-blue);
             text-decoration: none;
-            font-family: var(--font-en);
-            direction: ltr;
-            display: inline-block;
-            border-bottom: 1px solid transparent;
-            transition: border-color 0.2s;
+            font-weight: 500;
+            font-size: 1.05rem;
         }
 
-        a:hover {
-            border-color: var(--accent-color);
+        .contact-item a:hover {
+            text-decoration: underline;
         }
 
-        /* التذييل */
+        /* Footer */
         footer {
             text-align: center;
+            padding-top: 3rem;
+            margin-top: 3rem;
             border-top: 1px solid var(--border-color);
-            padding-top: 2rem;
             color: var(--text-secondary);
-            font-family: var(--font-en);
-            font-size: 0.85rem;
-            direction: ltr;
+            font-size: 0.9rem;
         }
 
-        /* تأثير مؤشر سطر الأوامر الوامض */
-        .cursor {
-            display: inline-block;
-            width: 12px;
-            height: 1.2em;
-            background-color: var(--accent-color);
-            vertical-align: bottom;
-            animation: blink 1s step-end infinite;
-            margin-left: 5px;
+        /* Modern Toast Notification for Copy Action */
+        #toast {
+            visibility: hidden;
+            min-width: 250px;
+            background-color: #323232;
+            color: #fff;
+            text-align: center;
+            border-radius: 4px;
+            padding: 16px;
+            position: fixed;
+            z-index: 1;
+            left: 50%;
+            bottom: 30px;
+            transform: translateX(-50%);
+            font-size: 0.95rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
         }
 
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
+        #toast.show {
+            visibility: visible;
+            animation: fadein 0.3s, fadeout 0.3s 2.5s;
+        }
+
+        @keyframes fadein {
+            from {bottom: 0; opacity: 0;}
+            to {bottom: 30px; opacity: 1;}
+        }
+
+        @keyframes fadeout {
+            from {bottom: 30px; opacity: 1;}
+            to {bottom: 0; opacity: 0;}
         }
     </style>
 </head>
 <body>
+
     <div class="container">
         <header>
-            <h1 id="typewriter"></h1>
-            <p class="subtitle">شركة متخصصة في الاستحواذ وإدارة الأصول الرقمية البريطانية</p>
+            <h1>UK Registry Services</h1>
+            <p class="subtitle">Specialized in the acquisition, management, and brokerage of premium digital assets in the United Kingdom.</p>
         </header>
 
         <section id="about">
-            <h2>من نحن</h2>
-            <p>نحن مؤسسة متخصصة في الاستثمار، التطوير، والوساطة للأصول الرقمية ونطاقات الإنترنت الاستراتيجية في سوق المملكة المتحدة. نهدف إلى تزويد الأعمال التجارية المحلية والوطنية بعناوين رقمية تعكس هويتها، وتزيد من موثوقيتها، وتضمن لها تواجداً تقنياً صلباً وموثوقاً في محركات البحث.</p>
+            <h2>About Us</h2>
+            <p>We are a corporate digital infrastructure firm dedicated to the strategic development of local search assets. Our mission is to provide local businesses, healthcare facilities, and national enterprises with high-authority digital identities.</p>
+            <p>By securing premium, geographically relevant domain names, we help our clients establish immediate trust, ensure unified search engine indexing, and solidify their technical presence in the highly competitive UK market.</p>
         </section>
 
         <section id="principles">
-            <h2>مبادئنا</h2>
-            <ul class="principles-list">
-                <li><strong>الشفافية الهيكلية:</strong> وضوح تام في تقييم الأصول وتسعيرها، وإجراءات النقل التقنية.</li>
-                <li><strong>القيمة الاستراتيجية:</strong> لا نستحوذ إلا على النطاقات ذات الإمكانات التجارية الحقيقية والصلة الجغرافية المباشرة بالسوق البريطاني.</li>
-                <li><strong>الأمان التقني:</strong> استخدام بروتوكولات حماية صارمة وقنوات مسجلة رسمياً لضمان سلامة النقل والاستحواذ.</li>
-            </ul>
+            <h2>Our Core Principles</h2>
+            <div class="principles-grid">
+                <div class="principle-card">
+                    <h3>Strategic Value</h3>
+                    <p>We exclusively acquire and curate domain assets that hold genuine commercial intent and direct relevance to local UK consumers.</p>
+                </div>
+                <div class="principle-card">
+                    <h3>Structural Transparency</h3>
+                    <p>We maintain clear, straightforward procedures for asset valuation, corporate communication, and pricing models.</p>
+                </div>
+                <div class="principle-card">
+                    <h3>Technical Excellence</h3>
+                    <p>Ensuring seamless handovers, from robust DNS configurations to secure registry transfers via established international channels.</p>
+                </div>
+            </div>
         </section>
 
         <section id="portfolio">
-            <h2>أصولنا الرقمية (المعروضة للاستحواذ)</h2>
-            <p style="margin-bottom: 1.5rem; color: var(--text-secondary); font-size: 0.9rem;">
-                * انقر على اسم النطاق لنسخه إلى الحافظة تلقائياً.
-            </p>
+            <div class="portfolio-header">
+                <h2>Premium Assets Portfolio</h2>
+                <span class="instruction-text">Click any card to copy the domain</span>
+            </div>
+            
             <div class="domains-grid">
                 <div class="domain-card" onclick="copyToClipboard('belfastdentist.co.uk')">
-                    <span class="domain-name">belfastdentist.co.uk</span>
-                    <div class="domain-status">متاح للاستحواذ</div>
+                    <div class="domain-name">belfastdentist.co.uk</div>
+                    <div class="domain-footer">
+                        <span class="status">Available for Acquisition</span>
+                        <span class="copy-icon">Copy</span>
+                    </div>
                 </div>
+
                 <div class="domain-card" onclick="copyToClipboard('belfastdentists.co.uk')">
-                    <span class="domain-name">belfastdentists.co.uk</span>
-                    <div class="domain-status">متاح للاستحواذ</div>
+                    <div class="domain-name">belfastdentists.co.uk</div>
+                    <div class="domain-footer">
+                        <span class="status">Available for Acquisition</span>
+                        <span class="copy-icon">Copy</span>
+                    </div>
                 </div>
+
                 <div class="domain-card" onclick="copyToClipboard('brightonhotel.co.uk')">
-                    <span class="domain-name">brightonhotel.co.uk</span>
-                    <div class="domain-status">متاح للاستحواذ</div>
+                    <div class="domain-name">brightonhotel.co.uk</div>
+                    <div class="domain-footer">
+                        <span class="status">Available for Acquisition</span>
+                        <span class="copy-icon">Copy</span>
+                    </div>
                 </div>
+
                 <div class="domain-card" onclick="copyToClipboard('leicesterhotel.co.uk')">
-                    <span class="domain-name">leicesterhotel.co.uk</span>
-                    <div class="domain-status">متاح للاستحواذ</div>
+                    <div class="domain-name">leicesterhotel.co.uk</div>
+                    <div class="domain-footer">
+                        <span class="status">Available for Acquisition</span>
+                        <span class="copy-icon">Copy</span>
+                    </div>
                 </div>
+
                 <div class="domain-card" onclick="copyToClipboard('pharmacies.quest')">
-                    <span class="domain-name">pharmacies.quest</span>
-                    <div class="domain-status">متاح للاستحواذ</div>
+                    <div class="domain-name">pharmacies.quest</div>
+                    <div class="domain-footer">
+                        <span class="status">Available for Acquisition</span>
+                        <span class="copy-icon">Copy</span>
+                    </div>
                 </div>
             </div>
         </section>
 
         <section id="contact">
-            <h2>تواصل معنا</h2>
-            <p>للاستفسارات العامة، أو لتقديم عروض الاستحواذ المباشرة على أحد أصولنا، يرجى مراسلتنا عبر العناوين المخصصة أدناه:</p>
-            <div class="contact-box">
-                <div class="contact-item">
-                    <span>للاستفسارات العامة وإدارة الأصول:</span>
-                    <a href="mailto:contact@registryservices.uk">contact@registryservices.uk</a>
-                </div>
-                <div class="contact-item">
-                    <span>لقسم المبيعات وعروض الاستحواذ:</span>
-                    <a href="mailto:acquisitions@registryservices.uk">acquisitions@registryservices.uk</a>
+            <div class="contact-container">
+                <h2>Contact Us</h2>
+                <p>For general inquiries or to submit a direct acquisition proposal for one of our digital assets, please reach out to the appropriate department below:</p>
+                
+                <div class="contact-grid">
+                    <div class="contact-item">
+                        <h4>General Inquiries & Asset Management</h4>
+                        <a href="mailto:contact@registryservices.uk">contact@registryservices.uk</a>
+                    </div>
+                    <div class="contact-item">
+                        <h4>Sales & Acquisition Offers</h4>
+                        <a href="mailto:acquisitions@registryservices.uk">acquisitions@registryservices.uk</a>
+                    </div>
                 </div>
             </div>
         </section>
 
         <footer>
-            &copy; 2026 UK Registry Services. All rights reserved.
+            <p>&copy; 2026 UK Registry Services. All rights reserved.</p>
         </footer>
     </div>
 
+    <div id="toast">Domain copied to clipboard</div>
+
     <script>
-        // تأثير الكتابة (Typewriter Effect) للعنوان الرئيسي ليعطي طابعاً تقنياً
-        const textToType = "UK Registry Services";
-        const titleElement = document.getElementById('typewriter');
-        let i = 0;
-
-        function typeWriter() {
-            if (i < textToType.length) {
-                titleElement.innerHTML = textToType.substring(0, i + 1) + '<span class="cursor"></span>';
-                i++;
-                setTimeout(typeWriter, 120);
-            }
-        }
-        
-        // تشغيل تأثير الكتابة عند تحميل الصفحة
-        window.addEventListener('load', typeWriter);
-
-        // وظيفة نسخ اسم الدومين عند الضغط عليه
+        // Modern Copy to Clipboard with Toast Notification
         function copyToClipboard(text) {
             navigator.clipboard.writeText(text).then(() => {
-                alert('تم نسخ النطاق بنجاح:\n' + text);
+                showToast(`Copied: ${text}`);
             }).catch(err => {
-                console.error('حدث خطأ أثناء النسخ: ', err);
+                console.error('Failed to copy text: ', err);
+                showToast('Failed to copy to clipboard');
             });
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById("toast");
+            toast.innerText = message;
+            toast.className = "show";
+            
+            // Hide the toast after 2.8 seconds
+            setTimeout(function(){ 
+                toast.className = toast.className.replace("show", ""); 
+            }, 2800);
         }
     </script>
 </body>
